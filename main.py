@@ -34,11 +34,14 @@ try:
                 split_line = line.split()
                 val = []
                 cval = []
+                conv_dict = {"0" : "0.0", "1" : "1.0"}
 
                 for x in split_line:
                     if not re.search('[a-zA-Z]', x):
-                        val.append(x)
-
+                        if x in conv_dict:
+                            val.append(conv_dict.get(x))
+                        else:
+                            val.append(x)
                     else:
                         cval.append(x)
 
